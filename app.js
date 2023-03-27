@@ -57,7 +57,7 @@ function generateRandomColor()
     const shuffleButton = document.querySelector(".shuffleButton");
     shuffleButton.onclick = () => {
         shuffle(colorsArray);
-       
+        paintCards();
     
     };
 
