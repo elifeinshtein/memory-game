@@ -1,0 +1,27 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px;
+    
+}
+
+.card {
+    height: 196px;
+    width: 120px;
+    cursor: pointer;
+}
+
+.shuffleButton {
+    cursor: pointer;
+    height: 40px;
+    width: 60px;
+}
+
+.reverse{
+background-image: url("cardBack.png");
+transition: 0.5s;
+transform: rotate(180deg);
+
+}
+
