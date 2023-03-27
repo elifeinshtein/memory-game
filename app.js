@@ -34,7 +34,7 @@ function generateRandomColor()
 
     const paintCards = () => {
         cards.forEach((card, i) => {
-            card.style.backgroundColor = colorsArray[i % colorsArray.length];
+            card.style.backgroundColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
 
         });
     };
@@ -57,7 +57,7 @@ function generateRandomColor()
     const shuffleButton = document.querySelector(".shuffleButton");
     shuffleButton.onclick = () => {
         shuffle(colorsArray);
-        paintCards();
+       
     
     };
 
@@ -76,15 +76,14 @@ function go(elem)
             if (mycards[0] == mycards[1])
             {
                 score++;
-                document.querySelector("result").innerHTML = score;
+                document.getElementById("result").innerHTML = score;
                 setTimeout(function ()
                 {
                 myelemcards[0].classList.add('card');
                 myelemcards[1].classList.add('card');
                 }, 1000)
-
-delete myelemcards[0];
-delete myelemcards[1];
+                myelemcards.splice(myelemcards[0]);
+                myelemcards.splice(myelemcards[1]);
 }
             
 else
