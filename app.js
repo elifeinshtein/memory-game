@@ -19,24 +19,17 @@ function generateRandomColor()
     {
         grid.innerHTML += '<div onclick="go(this)" class="card"></div> ';
 
-    }
 
-    function generateArrayOfColors() {
-        var colors = [];
-        for (var i = 0; i < 25; i++) {
-            colors.push(generateRandomColor());
-        }
-        return colors;
     }
-
-    const colorsArray = generateArrayOfColors();
+    
     const cards = document.querySelectorAll(".card");
 
     const paintCards = () => {
-        cards.forEach((card, i) => {
-            card.style.backgroundColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-
-        });
+        
+            for (var i = 0; i < cards.length; i += 2) {
+                cards.style.backgroundColor = generateRandomColor();
+            }
+        
     };
     paintCards();
 
@@ -48,16 +41,25 @@ function generateRandomColor()
     };
     createDeckOfCards();
 
-    
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
 
-    function shuffle(array) {
-        array.sort(() => Math.random() - 0.5);
+    
+    while (currentIndex != 0) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
     }
 
+    return array;
+}
     const shuffleButton = document.querySelector(".shuffleButton");
     shuffleButton.onclick = () => {
-        shuffle(colorsArray);
-        paintCards();
+        shuffle(cards);
+        
     
     };
 
@@ -68,7 +70,6 @@ function go(elem)
     {
     mycards.push(elem.style.backgroundColor);
     myelemcards.push(elem);
-    console.log(myelemcards);
     elem.classList.remove('reverse');
 ;
         if (mycards.length == 2)
@@ -79,11 +80,14 @@ function go(elem)
                 document.getElementById("result").innerHTML = score;
                 setTimeout(function ()
                 {
-                myelemcards[0].classList.add('card');
-                myelemcards[1].classList.add('card');
+               
                 }, 1000)
+
                 myelemcards.splice(myelemcards[0]);
+                myelemcards[0].remove();
                 myelemcards.splice(myelemcards[1]);
+                myelemcards[1].remove();
+
 }
             
 else
@@ -91,9 +95,9 @@ else
     setTimeout(function(){myelemcards[0].classList.add('reverse');
     myelemcards[1].classList.add('reverse');},2500)  
 }
-turns++;
-document.getElementById("turnsCount").innerHTML= turns;
-}
+    turns++;
+    document.getElementById("turnsCount").innerHTML= turns;
+    }
 
 if(mycards.length==2)
 {
@@ -104,5 +108,5 @@ if(mycards.length==2)
     console.log(mycards);},2501)
 }
     }
-}
+    }
 
