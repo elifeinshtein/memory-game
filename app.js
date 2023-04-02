@@ -53,13 +53,11 @@ for (var i = 0; i < 50; i+=2) {
 
 
 function go(elem) {
-    console.log(elem);
+    
     if (mycards.length < 2) {
         mycards.push(elem.style.backgroundColor);
         myelemcards.push(elem);
         elem.classList.remove('reverse');
-
-        console.log(mycards.length);
 
         if (mycards.length == 2) {
             if (mycards[0] == mycards[1]) {
@@ -87,7 +85,7 @@ function go(elem) {
             setTimeout(function () {
                 myelemcards = [];
                 mycards = [];
-                console.log(mycards);
+               
             }, 2501)
         }
     }
