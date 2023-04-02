@@ -1,4 +1,3 @@
-
 let mycards = [];
 let myelemcards = [];
 let score = 0;
@@ -42,17 +41,14 @@ shuffleButton.onclick = function () {
     });
 };
 const grid = document.querySelector('.grid');
-for (var i = 0; i < 50; ++i) {
-    grid.innerHTML += '<div onclick="go(this)" class="card"></div> ';
+for (var i = 0; i < 50; i+=2) {
+    grid.innerHTML += '<div onclick="go(this)" class="card"></div> ' + '<div onclick="go(this)" class="card"></div> ';
     const cards = document.querySelectorAll(".card");
-    cards[i].classList.add("reverse")
-}
-
-const cards = document.querySelectorAll(".card");
-for (var i = 0; i < cards.length; i += 2) {
     const color = generateRandomColor();
     cards[i].style.backgroundColor = color;
     cards[i + 1].style.backgroundColor = color;
+    cards[i].classList.add("reverse")
+    cards[i+1].classList.add("reverse")
 }
 
 
@@ -61,7 +57,6 @@ function go(elem) {
     if (mycards.length < 2) {
         mycards.push(elem.style.backgroundColor);
         myelemcards.push(elem);
-        console.log(myelemcards);
         elem.classList.remove('reverse');
 
         console.log(mycards.length);
